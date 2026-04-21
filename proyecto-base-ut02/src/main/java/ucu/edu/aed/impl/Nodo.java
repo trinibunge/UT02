@@ -73,19 +73,19 @@ public class Nodo<T> implements TDAElemento<T> {
         int criterio = nuevoDato.compareTo(this.dato);
         if (criterio > 0){
             if (getHijoDerecho()==null){
-                Nodo<T> nuevoNodo = new Nodo<T>(dato);
+                Nodo<T> nuevoNodo = new Nodo<T>((T) nuevoDato);
                 setHijoDerecho(nuevoNodo);
                 return true;
-            }else {
-                getHijoDerecho().insertar(nuevoDato);
+            } else {
+                return getHijoDerecho().insertar(nuevoDato);
             }
         } else if (criterio < 0) {
             if(getHijoIzquierdo() == null){
-                Nodo<T> nuevoNodo = new Nodo<T>(dato);
+                Nodo<T> nuevoNodo = new Nodo<T>((T) nuevoDato);
                 setHijoIzquierdo(nuevoNodo);
                 return true;
-            }else{
-                getHijoIzquierdo().insertar(nuevoDato);
+            } else {
+                return getHijoIzquierdo().insertar(nuevoDato);
             }
         }
         return false;
@@ -93,16 +93,37 @@ public class Nodo<T> implements TDAElemento<T> {
 
     @Override
     public void inOrder(Consumer<TDAElemento<T>> consumidor) {
+        if(hijoIzq!=null){
+            hijoIzq.inOrder(consumidor);
+        }
+        consumidor.accept(this);
+        if(hijoDer!=null){
+            hijoDer.inOrder(consumidor);
+        }
 
     }
 
     @Override
     public void preOrder(Consumer<TDAElemento<T>> consumidor) {
+        consumidor.accept(this);
+        if(hijoIzq!=null){
+            hijoIzq.preOrder(consumidor);
+        }
+        if(hijoDer!=null){
+            hijoDer.preOrder(consumidor);
+        }
 
     }
 
     @Override
     public void postOrder(Consumer<TDAElemento<T>> consumidor) {
+        if(hijoIzq!=null){
+            hijoIzq.postOrder(consumidor);
+        }
+        if(hijoDer!=null){
+            hijoDer.postOrder(consumidor);
+        }
+        consumidor.accept(this);
 
     }
 
@@ -113,26 +134,75 @@ public class Nodo<T> implements TDAElemento<T> {
 
     @Override
     public int cantidadHojas() {
+       int contador = 0;
+       if (hijoIzq==null && hijoDer == null){
+           contador++;
+       }else {
+           if (hijoIzq != null) {
+               contador += hijoIzq.cantidadHojas();
+           }
+           if (hijoDer != null) {
+               contador += hijoDer.cantidadHojas();
+           }
+       }
+       return contador;
     }
 
     @Override
     public int cantidadNodosInternos() {
-        return 0;
+        int contador = 0;
+
+        if (hijoIzq != null || hijoDer != null) {
+            contador = 1;
+        }
+        if (hijoIzq!=null){
+            contador += hijoIzq.cantidadNodosInternos();
+        }
+        if (hijoDer !=null){
+            contador += hijoDer.cantidadNodosInternos();
+        }
+        return contador;
     }
 
     @Override
     public int cantidadNodos() {
-        return 0;
+        int contador = 1;
+        if (hijoIzq!=null){
+            contador += hijoIzq.cantidadNodos();
+        }
+        if (hijoDer !=null){
+            contador += hijoDer.cantidadNodos();
+        }
+        return contador;
     }
 
     @Override
     public int altura() {
-        return 0;
+        if (hijoIzq != null && hijoDer != null) {
+            return 0;
+        }
+        int alturaIzq = (hijoIzq != null) ? hijoIzq.altura() : -1;
+        int alturaDer = hijoDer != null ? hijoDer.altura() : -1;
+        return Math.max(alturaIzq, alturaDer);
     }
 
     @Override
     public int obtenerNivel(Comparable<T> criterioBusqueda) {
-        return 0;
+        int criterio = criterioBusqueda.compareTo(this.dato);
+        if (criterio == 0) {
+            return 0;
+        }
+        if (criterio < 0) {
+            if (hijoIzq != null) {
+                return 1 + hijoIzq.obtenerNivel(criterioBusqueda);
+            }
+        }
+        if (criterio > 0) {
+            if (hijoDer != null) {
+                return 1 + hijoDer.obtenerNivel(criterioBusqueda);
+            }
+        }
+        return -1;
     }
-}
+    }
 
