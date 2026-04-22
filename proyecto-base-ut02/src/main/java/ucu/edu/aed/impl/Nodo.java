@@ -178,12 +178,7 @@ public class Nodo<T> implements TDAElemento<T> {
 
     @Override
     public int altura() {
-        if (hijoIzq != null && hijoDer != null) {
-            return 0;
-        }
-        int alturaIzq = (hijoIzq != null) ? hijoIzq.altura() : -1;
-        int alturaDer = hijoDer != null ? hijoDer.altura() : -1;
-        return Math.max(alturaIzq, alturaDer);
+       return 0;
     }
 
     @Override

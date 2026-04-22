@@ -13,7 +13,6 @@ public class ArbolBinario<T> implements TDAArbolBinario<TDAElemento> {
     public ArbolBinario() {
         raiz = null;
     }
-
     @Override
     public TDAElemento buscar(Comparable clave) {
         if (raiz != null) {
