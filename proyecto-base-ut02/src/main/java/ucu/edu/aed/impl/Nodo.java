@@ -220,4 +220,24 @@ public class Nodo<T> implements TDAElemento<T> {
             hijoIzq.enNivel(nivel-1,listaNodosEnNivel);
         }
     }
+
+    public void sustituir(String operando,int valor){
+        if (esHoja() && getDato().equals(operando)){
+            setDato((T) String.valueOf(valor));
+        }
+        if (hijoIzq!=null) hijoIzq.sustituir(operando,valor);
+        if (hijoDer!=null) hijoDer.sustituir(operando,valor);
+    }
+
+    public int evaluar(){
+        if (this.esHoja()) return Integer.parseInt(this.dato.toString());
+        else {
+            String op = getDato().toString();
+            if (op.equals("+")) return hijoDer.evaluar() + hijoIzq.evaluar();
+            else if (op.equals("x")) return hijoDer.evaluar() * hijoIzq.evaluar();
+            else if (op.equals("-")) return hijoDer.evaluar() - hijoIzq.evaluar();
+            else if (op.equals("/")) return hijoDer.evaluar() / hijoIzq.evaluar();
+            else return 0;
+        }
+    }
 }

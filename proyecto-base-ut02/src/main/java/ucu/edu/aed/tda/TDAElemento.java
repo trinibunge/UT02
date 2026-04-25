@@ -120,4 +120,8 @@ public interface TDAElemento <T>{
      * si no se encuentra, retorna -1
      */
     int obtenerNivel(Comparable<T> criterioBusqueda);
+
+    public void sustituir(String operando,int valor);
+
+    public int evaluar();
 }
