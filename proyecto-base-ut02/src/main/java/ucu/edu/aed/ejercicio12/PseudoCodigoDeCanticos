@@ -1,0 +1,31 @@
+LENGUAJE NATURAL: Dado el grimorio que contiene los hechizos que conoce un archimago. Un cantico es
+                  el conjunto de nombres de los hechizos prohibidos (aquellos cuyo id es impar) concatenados
+                  separados por "-". Es necesario implementar una lista enlazada que vaya recorriendo inOrden
+                  los hechizos del grimorio de un mago y comparando los Ids de los hechizos y agregando a la lista el
+                  nómbre del hechizo que les correspondan a los Ids impares. Deberá devolver todos los nombres separados por
+                  "-" de los hechizos prohibidos.
+
+PRECONDICIONES: - Existe el grimorio y se recomienda que no este vacío para evitar que el resultado
+                   no tenga sentido semánticamente.
+
+POSTCONDICIONES: - Retornará los nombres inOrden que le corresponden a los IDs impares del grimorio
+                   separados por "-".
+
+PSEUDOCODIGO:
+
+String cantico () inicio
+nueva listaenlazada <String> nombres
+
+arbol.inOrden(hechizo, si(hechizo.getId % 2 != 0){nombres.agregar(hechizo.getNombre)});
+retornar string.join("-", nombres)
+fin
+
+ESPECIFICACIÓN CASOS DE PRUEBA: grimorio(1, "Vuelo"; 2, "Invisibilidad"; 3, "Teletransportación")
+                                cantico() =  "Vuelo - Teletransportación"
+
+                                grimorio(2, "Invisibilidad"; 4, "Superfuerza")
+                                cantico() = ""
+
+ORDEN DE EJECUCIÓN DEL ALGORITMO: O(n)recorre todos los nodos del árbol exactamente una vez
+                                  en inOrden. Es el mejor caso y el peor caso.
+

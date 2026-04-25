@@ -64,7 +64,6 @@ public class Nodo<T> implements TDAElemento<T> {
      * Estrategia: si tiene dos hijos, lo reemplaza por el MAYOR del subárbol izquierdo
      * (predecesor in-order) — copia su dato y elimina ese nodo del subárbol izquierdo.
      */
-    @Override
     public TDAElemento<T> quitarElNodo() {
         if (this.hijoIzq == null) {
             return this.hijoDer;
