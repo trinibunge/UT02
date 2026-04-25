@@ -1,0 +1,40 @@
+Objetivo: Calcular el combustible disponible promedio de las naves exploradoras encontradas.
+Lenguaje natural: Se recorre el árbol completo y, para cada nodo, si su clase es "Explorador", se acumula su combustible en
+una suma y se incrementa un contador. Al finalizar, el promedio se obtiene dividiendo la suma total entre la cantidad de naves exploradoras.
+Precondiciones: - El árbol AVL está correctamente construido (propiedad de orden y balance).
+Postcondiciones: -Si no hay ninguna nave exploradora se devuelve 0.
+                 -Si el AVL está vacio se lanzará error.
+                 -Se retorna el promedio de combustible de las naves exploradoras
+
+//Metodo del arbol
+calcularCombustible(): float
+    Si raiz == nulo
+        Lanzar error "AVL vacío"
+    Fin si
+    suma = 0
+    cantidad = 0
+    raiz.calcularCombustible(suma, cantidad)
+    Si cantidad == 0
+        retornar 0
+    Fin si
+    retornar suma/cantidad
+fin método
+
+
+//Metodo del nodo
+calcularCombustible(suma: int, cantidad: int): void
+  Si hijoIzq ≠ nulo entonces
+    hijoIzq.calcularCombustible(suma, cantidad)
+  Fin si
+  Si this.Clase == "Explorador"
+      suma += this.getCombustible()
+      cantidad+=1
+    Fin si
+  Si hijoDer ≠ nulo entonces
+    hijoDer.calcularCombustible(suma, cantidad)
+  Fin si
+Fin método
+
+
+ORDEN DE EJECUCIÓN: O(n), porque como las claves del AVL son los códigos, no hay forma de "achicar" el problema, hay que recorrer
+todos los nodos para encontrar los exploradores y hacer la cuenta de promedio.
