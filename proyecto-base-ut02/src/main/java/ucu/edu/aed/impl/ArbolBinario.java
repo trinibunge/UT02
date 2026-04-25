@@ -3,6 +3,7 @@ package ucu.edu.aed.impl;
 import ucu.edu.aed.tda.TDAArbolBinario;
 import ucu.edu.aed.tda.TDAElemento;
 
+import java.util.LinkedList;
 import java.util.function.Consumer;
 
 public class ArbolBinario<T> implements TDAArbolBinario<T> {
@@ -81,5 +82,21 @@ public class ArbolBinario<T> implements TDAArbolBinario<T> {
     @Override
     public int cantidadNodosInternos() {
         return (raiz == null) ? 0 : raiz.cantidadNodosInternos();
+    }
+
+    public LinkedList<TDAElemento<T>> completos() {
+        LinkedList<TDAElemento<T>> listaNodosCompletos = new LinkedList<TDAElemento<T>>();
+        if (raiz != null) {
+            raiz.completos(listaNodosCompletos);
+        }
+        return listaNodosCompletos;
+    }
+
+    public LinkedList<TDAElemento<T>> enNivel(int nivel){
+        LinkedList<TDAElemento<T>> listaNodosEnNivel = new LinkedList<TDAElemento<T>>();
+        if (raiz!= null){
+            raiz.enNivel(nivel,listaNodosEnNivel);
+        }
+        return  listaNodosEnNivel;
     }
 }

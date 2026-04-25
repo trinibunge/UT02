@@ -1,6 +1,8 @@
 package ucu.edu.aed.impl;
 
 import ucu.edu.aed.tda.TDAElemento;
+
+import java.util.LinkedList;
 import java.util.function.Consumer;
 
 public class Nodo<T> implements TDAElemento<T> {
@@ -195,5 +197,27 @@ public class Nodo<T> implements TDAElemento<T> {
             return (n == -1) ? -1 : 1 + n;
         }
         return -1;
+    }
+
+    //devuelve una lista con todos los nodos que son completos (tienen dos hijos)
+    public void completos(LinkedList<TDAElemento<T>> listaNodosCompletos) {
+        if (hijoIzq != null && hijoDer != null) {
+            listaNodosCompletos.add(this);  // "this" es un TDAElemento<T>
+        }
+        if (hijoIzq != null) hijoIzq.completos(listaNodosCompletos);
+        if (hijoDer != null) hijoDer.completos(listaNodosCompletos);
+    }
+
+    public void enNivel(int nivel, LinkedList<TDAElemento<T>> listaNodosEnNivel){
+        if (nivel == 0){
+            //estamos en el nivel del cual queremos sus nodos. CASO BASE RECURSIVO
+            listaNodosEnNivel.add(this);
+        }
+        if (hijoDer!=null){
+            hijoDer.enNivel(nivel -1,listaNodosEnNivel);
+        }
+        if(hijoIzq!=null){
+            hijoIzq.enNivel(nivel-1,listaNodosEnNivel);
+        }
     }
 }
