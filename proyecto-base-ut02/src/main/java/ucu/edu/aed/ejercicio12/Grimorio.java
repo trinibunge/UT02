@@ -31,7 +31,7 @@ public class Grimorio {
     /**
      * Los hechizos prohibidos son aquellos cuyo ID es impar, el metodo
      * filtra a esos hechizos recorriendo el arbol 'preorden' y los añade a una lista
-     * @return Lista con ids cuyo id es impar
+     * @return Lista con hechizos cuyo id es impar ordenados en preOrden
      */
     public LinkedList<Integer> hechizosProhibidos() {
         LinkedList<Integer> prohibidos = new LinkedList<>();
@@ -42,7 +42,8 @@ public class Grimorio {
     /**
      * El cantico es el conjunto de nombres de los hechizos prohibidos de un mago,
      * la función de cantico() es justamente esa, generar el cantico de un mago
-     * @return nombres de los hechizos prohibidos del grimorio de un mago
+     * @return nombres de los hechizos prohibidos del grimorio de un mago separados por "-"
+     * recorriendo los hechizos inOrden.
      */
     public String cantico(){
         LinkedList<String> nombres = new LinkedList<>();
