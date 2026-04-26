@@ -17,8 +17,8 @@ public class main {
         grimorioAldric.agregarHechizos(88, "Curse");
 
         System.out.println("\n¡Bienvenidos al Grimorio del Archimago Aldric!\n");
-        System.out.println("\nIds de todos los hechizos: " + grimorioAldric.idsHechizos());
-        System.out.println("\nIds de los Hechizos Prohibidos: " + grimorioAldric.hechizosProhibidos());
+        System.out.println("\nIds de todos los hechizos en preOrden: " + grimorioAldric.idsHechizos());
+        System.out.println("\nIds de los Hechizos Prohibidos en preOrden: " + grimorioAldric.hechizosProhibidos());
         System.out.println("\nEl cantico secreto de Aldric es: " +  grimorioAldric.cantico());
 
 

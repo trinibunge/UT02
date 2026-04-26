@@ -14,7 +14,7 @@ public class Hechizo implements Comparable<Hechizo> {
         this.nombre = nombre;
     }
     /**
-     * Getter del id del hechizo
+     * Getter del id del hechizo y el nombre
      */
     public int getId() { return id; }
     public String getNombre() { return nombre; }
