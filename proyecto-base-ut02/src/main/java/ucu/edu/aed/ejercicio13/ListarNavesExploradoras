@@ -1,0 +1,35 @@
+Objetivo: Identificar las naves exploradoras y retornar una lista con el código de cada una de ellas.
+Lenguaje natural: Si el AVL está vacío se lanza error. Sino se va a recorrer todos los nodos del arbol (en inorden) y
+si su clase es "Explorador" se agrega su código a una lista.
+Precondiciones: - El árbol AVL está correctamente construido (propiedad de orden y balance).
+Postcondiciones: -Si no hay ninguna nave exploradora se devolverá una lista vacía.
+                 -Si el AVL está vacio se lanzará error.
+                 -La lista de codigos de las nave estara en orden de menor a mayor.
+
+//Metodo del arbol
+listarNavesExploradoras(): List<int>
+    lista ← nueva Lista vacía
+    Si raiz == nulo
+        Lanzar error "AVL vacío"
+    Fin si
+    raiz.listarInOrden(lista)
+    retornar lista
+fin método
+
+
+//Metodo del nodo
+listarInOrden(lista: Lista<T>): void
+  Si hijoIzq ≠ nulo entonces
+    hijoIzq.listarInOrden(lista)
+  Fin si
+  Si this.Clase == "Explorador"
+      lista.insertar(this.getDato())
+    Fin si
+  Si hijoDer ≠ nulo entonces
+    hijoDer.listarInOrden(lista)
+  Fin si
+Fin método
+
+
+ORDEN DE EJECUCIÓN: O(n), porque como las claves del AVL son los códigos, no hay forma de "achicar" el problema, hay que recorrer todos los nodos
+ACLARACIONES: Decidí recorrer el AVL en inorden para que los codigos de las naves queden ordenadas, pero cualquiera de los recrridos hubiese servido y sería igual de eficiente.

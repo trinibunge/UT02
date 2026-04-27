@@ -1,0 +1,30 @@
+LENGUAJE NATURAL: Dado el grimorio de un archimago que contiene el id y el nómbre de cada
+                  uno de los hechizos que conoce, se deberá crear una lista enlazada llamada "hechizosProhibidos"
+                  que, al recorrer el grimorio del mago (sin importar de que forma aunque yo lo apliqué en preOrden) compare el resto de
+                   dividir cada id de cada hechizo del archimago entre dos y si su resto es distinto que cero,
+                   se le agregue a la lista enlazada "hechizosProhibidos", finalmente que retorne la lista con
+                  todos los ids impares del grimorio del mago.
+
+PRECONDICIONES: - Existe el grimorio y se recomienda que no este vacío para evitar que el resultado
+                   no tenga sentido semánticamente.
+
+POSTCONDICIONES: - Retornará una lista con los IDs impares del grimorio
+
+PSEUDOCODIGO:
+
+listaenlazada <int> hechizosProhibidos()
+
+nueva lista enlazada prohibidos;
+
+arbol.preOrden(hechizo, si(hechizo.getId % 2 != 0){prohibidos.agregar(hechizo.getId)});
+retornar(prohibidos);
+fin
+
+ESPECIFICACIÓN CASOS DE PRUEBA: grimorio ( 1, "vuelo"; 2, "invisibilidad"; 3, "teletransportación");
+                                prohibidos [1, 3]
+
+                                grimorio(2, "invisibilidad"; 4, "superfuerza")
+                                prohibidos[]
+
+ORDEN DE EJECUCIÓN DEL ALGORITMO: O(n), recorre todos los nodos del árbol exactamente una vez
+                                  en preOrden. Es el mejor caso y el peor caso.
