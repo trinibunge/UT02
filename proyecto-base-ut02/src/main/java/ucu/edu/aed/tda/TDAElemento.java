@@ -45,6 +45,8 @@ public interface TDAElemento <T>{
      */
     TDAElemento<T> buscar(Comparable<T> criterioBusqueda);
 
+    TDAElemento<T> quitarElNodo();
+
     /**
      * Elimina un nodo del árbol según el criterio de búsqueda.
      * Si se encuentra, se retorna el nodo borrado. En otro caso retornar null.
