@@ -18,12 +18,12 @@ fin método
 
 
 //Metodo del nodo
-listarInOrden(lista: Lista<T>): void
+listarInOrden(lista: Lista<int>): void
   Si hijoIzq ≠ nulo entonces
     hijoIzq.listarInOrden(lista)
   Fin si
-  Si this.Clase == "Explorador"
-      lista.insertar(this.getDato())
+  Si this.getClase() == "Explorador"
+      lista.insertar(this.getCodigo())
     Fin si
   Si hijoDer ≠ nulo entonces
     hijoDer.listarInOrden(lista)
