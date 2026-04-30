@@ -1,6 +1,5 @@
 package ucu.edu.aed.ejercicio13;
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ucu.edu.aed.impl.ArbolBinario;
@@ -13,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AVLNavesTest {
 
     private AVLNaves avlNaves;
-    private TDAArbolBinario<Nave> avl; // reemplazá por tu implementación concreta
+    private TDAArbolBinario<Nave> avl;
 
     @BeforeEach
     void setUp() {
